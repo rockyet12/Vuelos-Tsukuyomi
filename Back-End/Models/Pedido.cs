@@ -15,6 +15,9 @@ namespace Back_End.Models
         public List<PedidoItem> Items { get; set; } = new();
         public bool Entregado { get; set; }
         public DateTime Fecha { get; set; }
+        
+        // Agrega esta propiedad
+        public decimal Total { get; set; } 
 
         public Venta? Venta { get; set; }
     }

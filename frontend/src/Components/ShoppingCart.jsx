@@ -25,7 +25,7 @@ const ShoppingCart = ({ cart, onUpdateCart, onClearCart }) => {
         };
 
         try {
-            const response = await axios.post('https://localhost:7123/api/pedidos', orderData);
+            const response = await axios.post('https://localhost:5251/api/pedidos', orderData);
             setOrderMessage('Pedido realizado con éxito. ¡Gracias por tu compra!');
             onClearCart(); // Limpia el carrito después de un pedido exitoso
             console.log('Order successful:', response.data);

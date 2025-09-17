@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import './App.css';
-import ProductList from './ProductList';
-import ShoppingCart from './ShoppingCart';
-import LoginForm from './LoginForm';
-import ProductForm from './ProductForm';
-import SalesDashboard from './SalesDashboard'; 
+import ProductList from './components/ProductList';
+import ShoppingCart from './components/ShoppingCart';
+import LoginForm from './components/LoginForm';
+import ProductForm from './components/ProductForm';
+import SalesDashboard from './components/SalesDashboard';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -17,6 +16,7 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setCart([]);
+    localStorage.removeItem('userToken');
   };
 
   const handleAddProductToCart = (product) => {
@@ -69,13 +69,11 @@ function App() {
       </header>
       <main>
         {user ? (
-          // Lógica condicional para renderizar los componentes según el rol
           user.rol === "Vendedor" ? (
             <ProductForm />
           ) : user.rol === "Gerente" ? (
             <SalesDashboard />
           ) : (
-            // Rol "Cliente" y cualquier otro rol no especificado
             <>
               <ProductList onAddProduct={handleAddProductToCart} />
               <ShoppingCart

@@ -133,3 +133,11 @@
 /home/roque/Proyecto/Back-End/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /home/roque/Proyecto/Back-End/bin/Debug/net9.0/BCrypt.Net-Next.dll
 /home/roque/Proyecto/Back-End/obj/Debug/net9.0/Back-End.sourcelink.json
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.dll
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/home/roque/Proyecto/Back-End/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll

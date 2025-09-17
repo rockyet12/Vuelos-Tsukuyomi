@@ -10,7 +10,7 @@ const ProductList = () => {
         const fetchProducts = async () => {
             try {
                 // Haz la petición GET a tu backend
-                const response = await axios.get("https://localhost:7123/api/productos");
+                const response = await axios.get("https://localhost:5251/api/productos");
                 setProducts(response.data);
             } catch (err) {
                 setError("Error al cargar los productos. Por favor, inténtalo de nuevo más tarde.");

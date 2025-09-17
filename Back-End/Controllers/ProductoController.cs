@@ -6,11 +6,11 @@ namespace Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PRoductoCOntroller : ControllerBase
+public class ProductoController : ControllerBase
 {
     private readonly AppDbContext _context;
 
-    public PRoductoCOntroller(AppDbContext context)
+    public ProductoController(AppDbContext context)
     {
         _context = context;
     }

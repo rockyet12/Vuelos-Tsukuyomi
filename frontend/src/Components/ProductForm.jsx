@@ -25,7 +25,7 @@ const ProductForm = () => {
 
         try {
             // Envía los datos del formulario a tu endpoint del backend
-            const response = await axios.post('https://localhost:7123/api/productos', formData);
+            const response = await axios.post('https://localhost:5251/api/productos', formData);
             
             setMessage('Producto agregado con éxito!');
             setFormData({

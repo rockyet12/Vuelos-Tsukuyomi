@@ -19,7 +19,7 @@ const RegisterForm = () => {
         }
 
         try {
-            const response = await axios.post('https://localhost:7123/api/clientes', {
+            const response = await axios.post('https://localhost:5251/api/clientes', {
                 // Asegúrate de que estos nombres de propiedad coincidan con tu modelo Cliente en C#
                 Nombre,
                 Apellido,

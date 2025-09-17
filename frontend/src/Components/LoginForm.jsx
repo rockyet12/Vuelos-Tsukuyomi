@@ -15,17 +15,21 @@ const LoginForm = ({ onLoginSuccess }) => {
 ``
         try {
             // Hacemos una petición POST a la ruta de login de tu API
-            const response = await axios.post('https://localhost:7123/api/clientes/login', {
+            const response = await axios.post('https://localhost:5251/api/clientes/login', {
                 email: email,
-                password: password,
+                Password: password,
             });
 
             console.log("Inicio de sesión exitoso:", response.data);
-            
-            // Llama a la función onLoginSuccess del componente padre
-            // y le pasa los datos del usuario para que se guarden en el estado de la aplicación
-            if (onLoginSuccess) {
-                onLoginSuccess(response.data);
+
+            //1- guarda  los datos del cliente y el token 
+            const {token, user}= response.data;         
+            //peude almacenar el token en el localStorage(almacenamiento local del navegador)
+            localStorage.setItem('userToken', token);
+
+            //2- llama a la funcion padre y solo pasa los datos del usuario
+            if(onLoginSuccess){
+                onLoginSuccess(user);
             }
 
         } catch (error) {

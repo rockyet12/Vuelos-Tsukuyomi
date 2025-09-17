@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import ApiClient from "./api/ApiClient";
 
 const SalesDashboard = () => {
     const [sales, setSales] = useState([]);
@@ -10,11 +10,14 @@ const SalesDashboard = () => {
         const fetchSales = async () => {
             try {
                 // Haz la petición GET a tu backend para obtener las ventas
-                const response = await axios.get("https://localhost:7123/api/ventas");
+                const response = await ApiClient.get("/ventas");
+                // Actualiza el estado con los datos recibidos
                 setSales(response.data);
+                //manejo de errores
             } catch (err) {
                 setError("Error al cargar las ventas. Por favor, inténtalo de nuevo más tarde.");
                 console.error("Error fetching sales:", err);
+                //finalizacion de carga
             } finally {
                 setLoading(false);
             }

@@ -19,16 +19,41 @@ public class PedidosController : ControllerBase
     {
         _context = context;
     }
-    // Crear nuevos pedidos (Clientes)
+
+
     [HttpPost]
     public async Task<ActionResult<Pedido>> PostPedido(Pedido pedido)
     {
-        _context.Pedidos.Add(pedido);
-        await _context.SaveChangesAsync();
+        using var transaction = await _context.Database.BeginTransactionAsync();
+        try
+        {
+            // 1-Guardar el pedido
+            _context.Pedidos.Add(pedido);
+            _context.SaveChanges();
+            //2-Clcula el total del pedido o venta
+            var totalVenta = pedido.Items.Sum(item => item.Cantidad * item.PrecioUnitario);
+            //3- crea registro de la venta
+            var venta = new Venta
+            {
+                Fecha = DateTime.UtcNow,
+                Total = totalVenta,
+                PedidoId = pedido.Id
+            };
+            _context.Ventas.Add(venta);
+            await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetPedido), new { id = pedido.Id }, pedido);
+            //4- confirma la transacion
+            _context.Database.CommitTransaction();
+
+            return CreatedAtAction(nameof(GetPedido), new { id = pedido.Id }, pedido);
+        }
+        catch (Exception ex)
+        {
+            // Si hay un error, revierte la transacción
+            await transaction.RollbackAsync();
+            return StatusCode(500, "Ocurrió un error al procesar el pedido: " + ex.Message);
+        }
     }
-
     [HttpGet("{id}")]
     public async Task<ActionResult<Pedido>> GetPedido(int id)
     {
@@ -43,4 +68,6 @@ public class PedidosController : ControllerBase
         }
         return pedido;
     }
+
+
 }
