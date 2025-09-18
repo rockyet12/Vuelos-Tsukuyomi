@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ApiClient from "./api/ApiClient";
-
+import ApiClient from "../api/api";
 const SalesDashboard = () => {
     const [sales, setSales] = useState([]);
     const [loading, setLoading] = useState(true);
