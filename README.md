@@ -70,3 +70,5 @@ Failed to compile.
 Module not found: Error: Can't resolve '../api/api' in '/home/roque/Proyecto/frontend/src/components'
 ERROR in ./src/components/SalesDashboard.jsx 6:0-35
 Module not found: Error: Can't resolve '../api/api' in '/home/roque/Proyecto/frontend/src/components'
+Proxima tareas 
+agregacion de cors, terminar logica de compras y comprobar toda las funciones que anden correctamente
